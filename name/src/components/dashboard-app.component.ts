@@ -1,5 +1,14 @@
-// import Vue from "vue";
-// import Component from "vue-class-component";
+import Vue from "vue";
+import Component from "vue-class-component";
+import MainTable from "./main-table.component";
+import { Prop } from "vue-property-decorator";
 
-// @Component
-// export default class Dashboard extends Vue {}
+@Component({
+  components: {
+    MainTable,
+  },
+})
+export default class Dashboard extends Vue {
+  @Prop()
+  private toggleTaskVision!: () => false;
+}
