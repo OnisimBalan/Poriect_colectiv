@@ -5,7 +5,7 @@ export default interface CardData {
   cardOwner: string;
   number: number;
   expirationDate: string;
-  cvv: number;
+  cvv: string;
 }
 
 class Card implements CardData {
@@ -15,7 +15,7 @@ class Card implements CardData {
   cardOwner: string;
   number: number;
   expirationDate: string;
-  cvv: number;
+  cvv: string;
 
   constructor(
     cardId: number,
@@ -24,7 +24,7 @@ class Card implements CardData {
     cardOwner: string,
     number: number,
     expirationDate: string,
-    cvv: number
+    cvv: string
   ) {
     this.cardId = cardId;
     this.cardNumber = cardNumber;
