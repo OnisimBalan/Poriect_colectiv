@@ -1,7 +1,7 @@
 <template>
   <div class="mt-5">
     <div class="d-flex">
-      <table class="table">
+      <!-- <table class="table">
         <thead>
           <tr>
             <th scope="col">Store</th>
@@ -32,7 +32,26 @@
             <th scope="row">5</th>
           </tr>
         </tbody>
-      </table>
+      </table> -->
+      <div>
+        <v-data-table item-key="name" class="elevation-1">
+          <template v-slot:top>
+            <v-text-field
+              label="Search (UPPER CASE ONLY)"
+              class="mx-4"
+            ></v-text-field>
+          </template>
+          <template>
+            <tr>
+              <td></td>
+              <td>
+                <v-text-field type="number" label="Less than"></v-text-field>
+              </td>
+              <td colspan="4"></td>
+            </tr>
+          </template>
+        </v-data-table>
+      </div>
     </div>
 
     <div class="">
