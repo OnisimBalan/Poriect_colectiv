@@ -1,64 +1,61 @@
-import { defineStore } from "pinia";
 import axios, { AxiosResponse } from "axios";
 import TaskData from "../data/task";
+import ITaskData from "../data/task";
 
-export const TasksServices = defineStore({
-  id: "Tasks",
-  state: () => ({
-    data: null,
-  }),
-  actions: {
-    async getAllTasks() {
-      try {
-        const response = await axios.get("/tasks");
-        const data = response.data;
+export default class TasksServices {
+  getAllTasks() {
+    return new Promise<AxiosResponse<ITaskData[]>>((resolve, reject) => {
+      axios
+        .get<TaskData[]>(`/tasks`)
+        .then((res) => {
+          resolve(res);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
 
-        this.data = data;
-      } catch (error) {
-        console.error("Error:", error);
-        throw error;
-      }
-    },
-    async createTasks(taskData: TaskData): Promise<AxiosResponse> {
-      try {
-        const response = await axios.post("/taskAdd", taskData);
-        return response;
-      } catch (error) {
-        console.error("Error:", error);
-        throw error;
-      }
-    },
-    async editTask(taskId: string, taskData: TaskData): Promise<AxiosResponse> {
-      try {
-        const response = await axios.put(`/tasksEdit/${taskId}`, taskData);
-        return response;
-      } catch (error) {
-        console.error("Error:", error);
-        throw error;
-      }
-    },
+  public createTasks(entity: TaskData): Promise<TaskData> {
+    return new Promise<ITaskData>((resolve, reject) => {
+      axios
+        .post("/taskAdd", entity)
+        .then((res) => {
+          resolve(res.data);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
 
-    async startTask(
-      taskId: string,
-      taskData: TaskData
-    ): Promise<AxiosResponse> {
-      try {
-        const response = await axios.post(`/tasksEdit/${taskId}`, taskData);
-        return response;
-      } catch (error) {
-        console.error("Error:", error);
-        throw error;
-      }
-    },
+  async editTask(taskId: string, taskData: TaskData): Promise<AxiosResponse> {
+    try {
+      const response = await axios.put(`/tasksEdit/${taskId}`, taskData);
+      return response;
+    } catch (error) {
+      console.error("Error:", error);
+      throw error;
+    }
+  }
 
-    async deleteTask(id: number): Promise<AxiosResponse> {
-      try {
-        const response = await axios.delete(`/taskDelete/${id}`);
-        return response;
-      } catch (error) {
-        console.error("Error:", error);
-        throw error;
-      }
-    },
-  },
-});
+  async startTask(taskId: string, taskData: TaskData): Promise<AxiosResponse> {
+    try {
+      const response = await axios.post(`/tasksEdit/${taskId}`, taskData);
+      return response;
+    } catch (error) {
+      console.error("Error:", error);
+      throw error;
+    }
+  }
+
+  private async deleteTask(id: number): Promise<AxiosResponse> {
+    try {
+      const response = await axios.delete(`/taskDelete/${id}`);
+      return response;
+    } catch (error) {
+      console.error("Error:", error);
+      throw error;
+    }
+  }
+}

@@ -1,45 +1,41 @@
 export default interface ITaskData {
-  id: string;
-  userID: string;
   taskName: string;
-  websiteId: string;
-  shipmentId: string;
-  productId: string;
-  size: number;
-  color: string;
-  status: string;
+  shops: string[];
+  categorys: string[];
+  prodcutNames: string[];
+  sizes: number[];
+  colors: string[];
+  profiles: string[];
+  cards: string[];
 }
 
 export class Task implements ITaskData {
-  id: string;
-  userID: string;
   taskName: string;
-  websiteId: string;
-  shipmentId: string;
-  productId: string;
-  size: number;
-  color: string;
-  status: string;
+  shops: string[];
+  categorys: string[];
+  prodcutNames: string[];
+  sizes: number[];
+  colors: string[];
+  profiles: string[];
+  cards: string[];
 
   constructor(
-    id: string,
-    userID: string,
     taskName: string,
-    websiteId: string,
-    shipmentId: string,
-    productId: string,
-    size: number,
-    color: string,
-    status: string
+    shops: string[],
+    categorys: string[],
+    prodcutNames: string[],
+    sizes: number[],
+    colors: string[],
+    profiles: string[],
+    cards: string[]
   ) {
-    this.id = id;
-    this.userID = userID;
     this.taskName = taskName;
-    this.websiteId = websiteId;
-    this.shipmentId = shipmentId;
-    this.productId = productId;
-    this.size = size;
-    this.color = color;
-    this.status = status;
+    this.shops = shops;
+    this.categorys = categorys;
+    this.prodcutNames = prodcutNames;
+    this.sizes = sizes;
+    this.colors = colors;
+    this.profiles = profiles;
+    this.cards = cards;
   }
 }

@@ -1,49 +1,53 @@
-export default interface ProfileData {
-  shipmentId: number;
+export interface IProfileData {
   shipmentName: string;
   name: string;
-  surname: string;
+  surName: string;
+  adress: string;
+  adressExtend: string;
   city: string;
   county: string;
   country: string;
-  zip: string;
+  zipCode: string;
   email: string;
-  phone: string;
+  phoneNumber: string;
 }
 
-export default class Profile implements ProfileData {
-  shipmentId: number;
+export default class Profile implements IProfileData {
   shipmentName: string;
   name: string;
-  surname: string;
+  surName: string;
+  adress: string;
+  adressExtend: string;
   city: string;
   county: string;
   country: string;
-  zip: string;
+  zipCode: string;
   email: string;
-  phone: string;
+  phoneNumber: string;
 
   constructor(
-    shipmentId: number,
     shipmentName: string,
     name: string,
-    surname: string,
+    surName: string,
+    adress: string,
+    adressExtend: string,
     city: string,
     county: string,
     country: string,
-    zip: string,
+    zipCode: string,
     email: string,
-    phone: string
+    phoneNumber: string
   ) {
-    this.shipmentId = shipmentId;
     this.shipmentName = shipmentName;
     this.name = name;
-    this.surname = surname;
+    this.surName = surName;
+    this.adress = adress;
+    this.adressExtend = adressExtend;
     this.city = city;
     this.county = county;
     this.country = country;
-    this.zip = zip;
+    this.zipCode = zipCode;
     this.email = email;
-    this.phone = phone;
+    this.phoneNumber = phoneNumber;
   }
 }

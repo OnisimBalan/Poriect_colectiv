@@ -2,7 +2,9 @@ import Vue from "vue";
 import Component from "vue-class-component";
 import ShowProfiles from "./show-profiles.vue";
 import Profile from "@/data/profile";
-import { ProfilesServices } from "@/services/profiles-services";
+import ProfilesServices from "@/services/profiles-services";
+import { Inject } from "vue-property-decorator";
+
 @Component({
   components: {
     ShowProfiles,
@@ -11,17 +13,21 @@ import { ProfilesServices } from "@/services/profiles-services";
 export default class Profiles extends Vue {
   private showProfiles = false;
   private showData = true;
+  private profilesServices = new ProfilesServices();
 
-  private firstName = "";
-  private lastName = "";
-  private email = "";
-  private phoneNumber = "";
-  private street = "";
-  private zipCode = "";
+  //@Inject("profileServices") private profileServices!: ProfilesServices;
+
+  private shipmentName = "";
+  private name = "";
+  private surName = "";
+  private adress = "";
+  private adressExtend = "";
   private city = "";
   private country = "";
-
-  private profileServices = ProfilesServices();
+  private county = "";
+  private zipCode = "";
+  private email = "";
+  private phoneNumber = "";
 
   private toggleViews() {
     this.showProfiles = !this.showProfiles;
@@ -30,18 +36,26 @@ export default class Profiles extends Vue {
 
   private addProfiles() {
     const profile: Profile = new Profile(
-      1,
-      "",
-      " ",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
+      this.shipmentName,
+      this.name,
+      this.surName,
+      this.adress,
+      this.adressExtend,
+      this.city,
+      this.county,
+      this.country,
+      this.zipCode,
+      this.email,
+      this.phoneNumber
     );
 
-    this.profileServices.postProfile(profile);
+    this.profilesServices
+      .postProfile(profile)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 }

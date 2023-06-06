@@ -1,57 +1,58 @@
-import { defineStore } from "pinia";
 import axios, { AxiosResponse } from "axios";
-import ProfileData from "../data/profile";
+import ProfileData, { IProfileData } from "../data/profile";
 
-export const ProfilesServices = defineStore({
-  id: "Profiles",
-  state: () => ({
-    data: null,
-  }),
-  actions: {
-    async getAllProfiles() {
-      try {
-        const response = await axios.get("/profiles");
-        const data = response.data;
+const baseApiUrl = "api/";
 
-        this.data = data;
-      } catch (error) {
-        console.error("Error:", error);
-        throw error;
-      }
-    },
-    async postProfile(profileData: ProfileData): Promise<AxiosResponse> {
-      try {
-        const response = await axios.post("/profileAdd", profileData);
-        return response;
-      } catch (error) {
-        console.error("Error:", error);
-        throw error;
-      }
-    },
+export default class ProfilesServices {
+  public getAllProfiles() {
+    return new Promise<AxiosResponse<ProfileData[]>>((resolve, reject) => {
+      axios
+        .get<ProfileData[]>(`/profiles`)
+        .then((res) => {
+          resolve(res);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
 
-    async editProfile(
-      profileId: number,
-      updatedData: ProfileData
-    ): Promise<AxiosResponse> {
-      try {
-        const response = await axios.put(
-          `/profileEdit/${profileId}`,
-          updatedData
-        );
-        return response;
-      } catch (error) {
-        console.error("Error:", error);
-        throw error;
-      }
-    },
-    async deleteProfile(id: number): Promise<AxiosResponse> {
-      try {
-        const response = await axios.delete(`/profileDelete/${id}`);
-        return response;
-      } catch (error) {
-        console.error("Error:", error);
-        throw error;
-      }
-    },
-  },
-});
+  public postProfile(entity: ProfileData): Promise<IProfileData> {
+    return new Promise<IProfileData>((resolve, reject) => {
+      axios
+        .post("/profileAdd", entity)
+        .then((res) => {
+          resolve(res.data);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
+
+  async editProfile(
+    profileId: number,
+    updatedData: ProfileData
+  ): Promise<AxiosResponse> {
+    try {
+      const response = await axios.put(
+        `/profileEdit/${profileId}`,
+        updatedData
+      );
+      return response;
+    } catch (error) {
+      console.error("Error:", error);
+      throw error;
+    }
+  }
+
+  async deleteProfile(id: number): Promise<AxiosResponse> {
+    try {
+      const response = await axios.delete(`/profileDelete/${id}`);
+      return response;
+    } catch (error) {
+      console.error("Error:", error);
+      throw error;
+    }
+  }
+}

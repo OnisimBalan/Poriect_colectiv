@@ -8,7 +8,7 @@ import { Prop } from "vue-property-decorator";
     MainTable,
   },
 })
-export default class Dashboard extends Vue {
+export default class Entry extends Vue {
   @Prop()
   private toggleTaskVision!: () => false;
 

@@ -37,4 +37,4 @@
     </div>
   </div>
 </template>
-<script lang="ts" src="./dashboard-app.component.ts"></script>
+<script lang="ts" src="./entry-app.component.ts"></script>
