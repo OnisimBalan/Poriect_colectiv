@@ -11,7 +11,7 @@ export default interface ProfileData {
   phone: string;
 }
 
-class Profile implements ProfileData {
+export default class Profile implements ProfileData {
   shipmentId: number;
   shipmentName: string;
   name: string;

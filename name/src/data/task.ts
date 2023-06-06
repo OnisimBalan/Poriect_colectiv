@@ -1,4 +1,4 @@
-export default interface TaskData {
+export default interface ITaskData {
   id: string;
   userID: string;
   taskName: string;
@@ -10,7 +10,7 @@ export default interface TaskData {
   status: string;
 }
 
-export class Task implements TaskData {
+export class Task implements ITaskData {
   id: string;
   userID: string;
   taskName: string;

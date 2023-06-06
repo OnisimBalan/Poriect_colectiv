@@ -19,7 +19,7 @@ export const ProfilesServices = defineStore({
         throw error;
       }
     },
-    async postAllProfiles(profileData: ProfileData): Promise<AxiosResponse> {
+    async postProfile(profileData: ProfileData): Promise<AxiosResponse> {
       try {
         const response = await axios.post("/profileAdd", profileData);
         return response;
@@ -34,7 +34,10 @@ export const ProfilesServices = defineStore({
       updatedData: ProfileData
     ): Promise<AxiosResponse> {
       try {
-        const response = await axios.put(`/cardEdit/${profileId}`, updatedData);
+        const response = await axios.put(
+          `/profileEdit/${profileId}`,
+          updatedData
+        );
         return response;
       } catch (error) {
         console.error("Error:", error);

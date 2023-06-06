@@ -19,7 +19,7 @@ export const TasksServices = defineStore({
         throw error;
       }
     },
-    async postAllTasks(taskData: TaskData): Promise<AxiosResponse> {
+    async createTasks(taskData: TaskData): Promise<AxiosResponse> {
       try {
         const response = await axios.post("/taskAdd", taskData);
         return response;

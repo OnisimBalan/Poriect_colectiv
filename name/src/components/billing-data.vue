@@ -12,6 +12,17 @@
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
+                    <label for="name">Name x</label>
+                    <input
+                      class="form-control"
+                      id="name"
+                      type="text"
+                      placeholder="name x"
+                    />
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="form-group">
                     <label for="name">Name</label>
                     <input
                       class="form-control"
@@ -68,7 +79,11 @@
             </div>
             <div class="card-footer d-flex">
               <button class="btn btn-sm btn-success float-right" type="submit">
-                Continue
+                Add
+              </button>
+              <div class="p-2"></div>
+              <button class="btn btn-sm btn-success float-right" type="submit">
+                Show cards
               </button>
               <div class="p-2"></div>
               <button
