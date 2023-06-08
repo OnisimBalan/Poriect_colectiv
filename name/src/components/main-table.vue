@@ -52,7 +52,7 @@
         </select>
       </div>
       <div class="form-control d-flex">
-        <label class="m-1">Profile:</label>
+        <label class="m-1">Profiles:</label>
         <select class="btnCard" required>
           <option v-for="(children, i) in profiles" :key="i">
             {{ children }}
@@ -60,7 +60,7 @@
         </select>
       </div>
       <div class="form-control d-flex">
-        <label class="m-1">Card:</label>
+        <label class="m-1">Cards:</label>
         <select class="btnCard" required>
           <option v-for="(children, i) in cards" :key="i">
             {{ children }}

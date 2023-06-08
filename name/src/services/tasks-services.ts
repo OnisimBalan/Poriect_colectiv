@@ -16,7 +16,7 @@ export default class TasksServices {
     });
   }
 
-  public createTasks(entity: TaskData): Promise<TaskData> {
+  public createTask(entity: TaskData): Promise<ITaskData> {
     return new Promise<ITaskData>((resolve, reject) => {
       axios
         .post("/taskAdd", entity)

@@ -2,37 +2,46 @@ import ITaskData, { Task } from "@/data/task";
 import TasksServices from "@/services/tasks-services";
 import Vue from "vue";
 import Component from "vue-class-component";
-import { Inject } from "vue-property-decorator";
-
+import Card from "../data/card";
+import Profile from "@/data/profile";
 @Component
 export default class MainTable extends Vue {
   private taskName = "";
-  private shops = [];
-  private categorys = [];
-  private prodcutNames = [];
-  private sizes = [];
-  private colors = [];
-  private profiles = [];
-  private cards = [];
+  private shop = "";
+  private category = "";
+  private prodcutName = "";
+  private size = "";
+  private color = "";
+  private profile = "";
+  private card = "";
+  private cards: Card[] = [];
+  private profiles: Profile[] = [];
 
-  @Inject("tasksServices") private tasksServices!: TasksServices;
+  private tasksServices = new TasksServices();
 
   private createTask() {
-    const task: Task = new Task(
+    let task: Task = new Task(
       this.taskName,
-      this.shops,
-      this.categorys,
-      this.prodcutNames,
-      this.sizes,
-      this.colors,
-      this.profiles,
-      this.cards
+      this.shop,
+      this.category,
+      this.prodcutName,
+      this.size,
+      this.color,
+      this.profile,
+      this.card
     );
 
     if (!task) {
       return;
     }
 
-    this.tasksServices.createTasks(task);
+    this.tasksServices
+      .createTask(task)
+      .then((result) => {
+        task = result;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 }

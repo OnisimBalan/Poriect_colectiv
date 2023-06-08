@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="profile-cls" v-if="showData">
+    <div class="profile-cls">
       <form>
         <div class="row">
           <div class="col">

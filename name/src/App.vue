@@ -59,7 +59,7 @@
             </div>
             <div v-if="homeVisible">
               <h1 class="page-header">Tasks</h1>
-              <Dashboard :toggleTaskVision="toggleTaskVision"></Dashboard>
+              <Entry :toggleTaskVision="toggleTaskVision"></Entry>
             </div>
             <div v-if="taskVisible" aria-hidden="true">
               <div class="">
