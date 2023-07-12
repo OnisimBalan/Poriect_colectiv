@@ -1,4 +1,5 @@
 export interface IProfileData {
+  userId: string;
   shipmentName: string;
   name: string;
   surName: string;
@@ -13,6 +14,7 @@ export interface IProfileData {
 }
 
 export default class Profile implements IProfileData {
+  userId: string;
   shipmentName: string;
   name: string;
   surName: string;
@@ -26,6 +28,7 @@ export default class Profile implements IProfileData {
   phoneNumber: string;
 
   constructor(
+    userId: string,
     shipmentName: string,
     name: string,
     surName: string,
@@ -38,6 +41,7 @@ export default class Profile implements IProfileData {
     email: string,
     phoneNumber: string
   ) {
+    this.userId = userId;
     this.shipmentName = shipmentName;
     this.name = name;
     this.surName = surName;

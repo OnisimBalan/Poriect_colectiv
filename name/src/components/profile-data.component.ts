@@ -16,7 +16,7 @@ export default class Profiles extends Vue {
   private profilesServices = new ProfilesServices();
 
   //@Inject("profileServices") private profileServices!: ProfilesServices;
-
+  private userId = "";
   private shipmentName = "";
   private name = "";
   private surName = "";
@@ -36,6 +36,7 @@ export default class Profiles extends Vue {
 
   private addProfiles() {
     const profile: Profile = new Profile(
+      this.userId,
       this.shipmentName,
       this.name,
       this.surName,

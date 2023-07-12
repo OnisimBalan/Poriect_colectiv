@@ -5,8 +5,7 @@ export default interface ITaskData {
   prodcutName: string;
   size: string;
   color: string;
-  profile: string;
-  card: string;
+  status: string;
 }
 
 export class Task implements ITaskData {
@@ -16,8 +15,7 @@ export class Task implements ITaskData {
   prodcutName: string;
   size: string;
   color: string;
-  profile: string;
-  card: string;
+  status: string;
 
   constructor(
     taskName: string,
@@ -26,8 +24,7 @@ export class Task implements ITaskData {
     prodcutName: string,
     size: string,
     color: string,
-    profile: string,
-    card: string
+    status: string
   ) {
     this.taskName = taskName;
     this.shop = shop;
@@ -35,7 +32,6 @@ export class Task implements ITaskData {
     this.prodcutName = prodcutName;
     this.size = size;
     this.color = color;
-    this.profile = profile;
-    this.card = card;
+    this.status = status;
   }
 }

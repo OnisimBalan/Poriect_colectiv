@@ -12,60 +12,49 @@
         />
       </div>
       <div class="form-control d-flex">
-        <label class="m-1">Shop:</label>
-        <select class="btnCard" required>
-          <option v-for="(children, i) in shops" :key="i">
-            {{ children }}
-          </option>
-        </select>
+        <input
+          required
+          type="text"
+          name="Shop"
+          v-model="shop"
+          placeholder="Shop"
+        />
       </div>
       <div class="form-control d-flex">
-        <label class="m-1">Category:</label>
-        <select class="btnCard" required>
-          <option v-for="(children, i) in categorys" :key="i">
-            {{ children }}
-          </option>
-        </select>
+        <input
+          required
+          type="text"
+          name="Prodcut name"
+          v-model="prodcutName"
+          placeholder="Prodcut name"
+        />
       </div>
       <div class="form-control d-flex">
-        <label class="m-1">Product name:</label>
-        <select class="btnCard" required>
-          <option v-for="(children, i) in prodcutNames" :key="i">
-            {{ children }}
-          </option>
-        </select>
+        <input
+          required
+          type="text"
+          name="Size"
+          v-model="size"
+          placeholder="Size"
+        />
       </div>
       <div class="form-control d-flex">
-        <label class="m-1">Size: </label>
-        <select class="btnCard" required>
-          <option v-for="(children, i) in sizes" :key="i">
-            {{ children }}
-          </option>
-        </select>
+        <input
+          required
+          type="text"
+          name="Color"
+          v-model="color"
+          placeholder="Color"
+        />
       </div>
       <div class="form-control d-flex">
-        <label class="m-1">Color:</label>
-        <select class="btnCard" required>
-          <option v-for="(children, i) in colors" :key="i">
-            {{ children }}
-          </option>
-        </select>
-      </div>
-      <div class="form-control d-flex">
-        <label class="m-1">Profiles:</label>
-        <select class="btnCard" required>
-          <option v-for="(children, i) in profiles" :key="i">
-            {{ children }}
-          </option>
-        </select>
-      </div>
-      <div class="form-control d-flex">
-        <label class="m-1">Cards:</label>
-        <select class="btnCard" required>
-          <option v-for="(children, i) in cards" :key="i">
-            {{ children }}
-          </option>
-        </select>
+        <input
+          required
+          type="text"
+          name="Status"
+          v-model="status"
+          placeholder="Status"
+        />
       </div>
       <div class="mt-4 d-flex">
         <button class="btn btn-success" @click="createTask()">Save Task</button>

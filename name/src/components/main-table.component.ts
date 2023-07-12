@@ -12,8 +12,7 @@ export default class MainTable extends Vue {
   private prodcutName = "";
   private size = "";
   private color = "";
-  private profile = "";
-  private card = "";
+  private status = "";
   private cards: Card[] = [];
   private profiles: Profile[] = [];
 
@@ -27,8 +26,7 @@ export default class MainTable extends Vue {
       this.prodcutName,
       this.size,
       this.color,
-      this.profile,
-      this.card
+      this.status
     );
 
     if (!task) {
